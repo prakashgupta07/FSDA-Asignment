@@ -89,3 +89,30 @@ select name from phones P left outer join call_duration CD on P.phone_number=CD.
 group by name
 having sum(duration)>10
 order by name;
+
+
+--TASK 3
+--Write an SQL query that returns a table containing one column,balance.The table should contain one row with the total balance of your account at the end of the year,includeing the fee of holding a credit card?
+
+CREATE TABLE  `transactions`
+(
+    amount integer not null,
+    date date not null
+);
+
+
+INSERT INTO `TRANSACTIONS` VALUES 
+(1000,'2020-01-06'),
+(-10,'2020-01-14'),
+(-75,'2020-01-20'),
+(-5,'2020-01-25'),
+(-4,'2020-01-29'),
+(2000,'2020-03-10'),
+(-75,'2020-03-12'),
+(-20,'2020-03-15'),
+(40,'2020-03-15'),
+(-50,'2020-03-17'),
+(200,'2020-10-10'),
+(-200,'2020-10-10');
+
+SELECT *  FROM `TRANSACTIONS`;
