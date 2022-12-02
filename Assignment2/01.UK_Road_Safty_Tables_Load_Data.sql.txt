@@ -1,6 +1,6 @@
 Create database Assignment2;
 use Assignment2;
-drop table `Accidents_2015`;
+
 CREATE  TABLE `Accidents_2015` (
 	`Accident_Index` VARCHAR(13) NOT NULL, 
 	`Location_Easting_OSGR` DECIMAL(38, 0) null , 
