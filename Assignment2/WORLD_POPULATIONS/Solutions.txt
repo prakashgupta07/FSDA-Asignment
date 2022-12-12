@@ -1,0 +1,70 @@
+#Create Database
+
+create database World_Population;
+
+# Use Database
+use World_Population;
+
+#Create Table
+CREATE TABLE `World_population` (
+	country VARCHAR(45) NOT NULL, 
+	area DECIMAL(38, 0), 
+	birth_rate DECIMAL(38, 2), 
+	death_rate DECIMAL(38, 2), 
+	infant_mortality_rate DECIMAL(38, 2), 
+	internet_users DECIMAL(38, 0), 
+	life_exp_at_birth DECIMAL(38, 2), 
+	maternal_mortality_rate DECIMAL(38, 0), 
+	net_migration_rate DECIMAL(38, 2), 
+	population int, 
+	population_growth_rate DECIMAL(38, 2)
+);
+
+# Load data into table 
+
+load data infile
+'D:/World_population.csv'
+into table world_population
+fields terminated by ','
+enclosed by '"'
+lines terminated by '\n'
+ignore 1 rows;
+
+
+#Call all the records from table
+
+select * from world_population;
+
+
+
+/* Question 1.
+ Which country has the highest population?*/
+ select country from world_population order by population desc limit 1;
+
+ 
+/* Question 2. 
+Which country has the least number of people?*/
+select country from world_population order by population  limit 1;
+
+
+/* Question 3.
+ Which country is witnessing the highest population growth? */
+ select country from world_population order by population_growth_rate desc limit 1;
+
+ 
+/* Question 4. 
+Which country has an extraordinary number for the population? */
+select country from world_population order by population desc limit 1;
+
+
+
+
+/* Question 5. 
+Which is the most densely populated country in the world?*/
+select country from 
+ (select *,population/area as densely_populated from world_population
+ order by densely_populated desc) as densely_population_country limit 1;
+ 
+ 
+ 
+
